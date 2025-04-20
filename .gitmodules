@@ -1,0 +1,9 @@
+[submodule "host-app"]
+	path = host-app
+	url = https://github.com/winkidzz/healthcare-portal-host-app.git
+[submodule "preferences-mfe"]
+	path = preferences-mfe
+	url = https://github.com/winkidzz/healthcare-portal-preferences-mfe.git
+[submodule "icd-tests-mfe"]
+	path = icd-tests-mfe
+	url = https://github.com/winkidzz/healthcare-portal-icd-tests-mfe.git
