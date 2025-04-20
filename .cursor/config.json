@@ -1,0 +1,130 @@
+{
+  "memoryBank": {
+    "enabled": true,
+    "path": "memory-bank",
+    "files": {
+      "rules": "rules.md",
+      "activeContext": "activeContext.md",
+      "techContext": "techContext.md",
+      "systemPatterns": "systemPatterns.md",
+      "productContext": "productContext.md",
+      "projectBrief": "projectbrief.md"
+    },
+    "rules": {
+      "portConfiguration": {
+        "hostApp": 3000,
+        "preferencesMfe": 3001,
+        "icdTestsMfe": 3002
+      },
+      "startupSequence": [
+        {
+          "name": "hostApp",
+          "command": "cd host-app && NEXT_PRIVATE_LOCAL_WEBPACK=true npm run dev",
+          "port": 3000
+        },
+        {
+          "name": "preferencesMfe",
+          "command": "cd preferences-mfe && npm run dev",
+          "port": 3001
+        },
+        {
+          "name": "icdTestsMfe",
+          "command": "cd icd-tests-mfe && npm run dev",
+          "port": 3002
+        }
+      ],
+      "buildTools": {
+        "hostApp": {
+          "tool": "webpack",
+          "envVar": "NEXT_PRIVATE_LOCAL_WEBPACK=true"
+        },
+        "microFrontends": {
+          "tool": "turbopack",
+          "flag": "--turbopack"
+        }
+      }
+    },
+    "documentation": {
+      "updateOnChange": true,
+      "crossReference": true,
+      "maintainConsistency": true
+    },
+    "testing": {
+      "framework": "playwright",
+      "directory": "host-app",
+      "command": "npm run test"
+    },
+    "sequentialThinking": {
+      "enabled": true,
+      "schema": {
+        "type": "object",
+        "required": ["thought", "nextThoughtNeeded", "thoughtNumber", "totalThoughts"],
+        "properties": {
+          "thought": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nextThoughtNeeded": {
+            "type": "boolean"
+          },
+          "thoughtNumber": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "totalThoughts": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "validation": {
+        "enabled": true,
+        "strict": true
+      },
+      "examples": [
+        {
+          "description": "Basic sequential thinking",
+          "parameters": {
+            "thought": "Analyzing the current project state",
+            "nextThoughtNeeded": true,
+            "thoughtNumber": 1,
+            "totalThoughts": 5
+          }
+        },
+        {
+          "description": "Revision of previous thought",
+          "parameters": {
+            "thought": "Revising previous analysis",
+            "nextThoughtNeeded": true,
+            "thoughtNumber": 2,
+            "totalThoughts": 5,
+            "isRevision": true,
+            "revisesThought": 1
+          }
+        },
+        {
+          "description": "Branching thought process",
+          "parameters": {
+            "thought": "Exploring alternative approach",
+            "nextThoughtNeeded": true,
+            "thoughtNumber": 3,
+            "totalThoughts": 5,
+            "branchFromThought": 2,
+            "branchId": "alternative-1"
+          }
+        }
+      ]
+    }
+  },
+  "projectStructure": {
+    "root": "/Users/sanantha/cursorprojects",
+    "components": {
+      "hostApp": "host-app",
+      "preferencesMfe": "preferences-mfe",
+      "icdTestsMfe": "icd-tests-mfe",
+      "sharedLibrary": "shared-library",
+      "headlessCore": "headless-core"
+    }
+  }
+} 
