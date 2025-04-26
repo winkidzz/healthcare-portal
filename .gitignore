@@ -61,4 +61,11 @@ next-env.d.ts
 
 # Cursor specific
 .cursor/cursors
-.cursor/logs 
+.cursor/logs
+
+# Gradle
+.gradle/
+**/build/
+*.iml
+
+# Gradle-related ignore patterns 
