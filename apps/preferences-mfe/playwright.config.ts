@@ -20,7 +20,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=4000 npm run dev',
+    command: 'NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=4000 next dev',
     url: 'http://localhost:4000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

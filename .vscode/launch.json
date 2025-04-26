@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: debug preferences-mfe",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/preferences-mfe",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:debug"],
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/apps/preferences-mfe/.next/**/*.js"]
+    }
+  ]
+} 

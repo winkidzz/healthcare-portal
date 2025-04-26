@@ -1,4 +1,4 @@
-import { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import { User } from './index';
 
 interface AuthContextType {
@@ -21,5 +21,5 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children, value }: AuthProviderProps) {
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return React.createElement(AuthContext.Provider, { value }, children);
 } 

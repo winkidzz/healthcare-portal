@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
+    "dev": "NODE_OPTIONS='--trace-warnings' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
+    "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=4000 npx playwright test"
+    "test": "lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=4000 npx playwright test",
+    "test:ci": "PORT=4000 npx playwright test",
+    "diagnose": "node scripts/diagnose.js",
+    "predev": "npm run diagnose"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
