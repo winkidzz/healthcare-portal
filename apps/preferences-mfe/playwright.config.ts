@@ -1,32 +1,52 @@
-import { defineConfig, devices } from '@playwright/test';
+import { PlaywrightTestConfig } from '@playwright/test';
 
-export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'list',
-  timeout: 20000, // 20 seconds timeout
+const config: PlaywrightTestConfig = {
+  // Run tests in parallel
+  workers: 4,
+  
+  // Retry failed tests
+  retries: 1,
+  
+  // Increase timeout for tests
+  timeout: 30000,
+  
+  // Use a single browser for all tests
   use: {
-    baseURL: 'http://localhost:4000',
-    trace: 'on-first-retry',
-    headless: true,
+    // Use a single browser instance
+    browserName: 'chromium',
+    
+    // Base URL for tests
+    baseURL: 'http://localhost:3001',
+    
+    // Disable video recording
+    video: 'off',
+    
+    // Disable screenshots on failure
+    screenshot: 'only-on-failure',
+    
+    // Disable trace recording
+    trace: 'off',
+    
+    // Set viewport size
+    viewport: { width: 1280, height: 720 },
   },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
+  
+  // Configure test output
+  reporter: 'list',
+  
+  // Configure test directory
+  testDir: './tests',
+  
+  // Configure test files pattern
+  testMatch: '**/*.spec.ts',
+  
+  // Configure web server
   webServer: {
-    command: 'NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=4000 next dev',
-    url: 'http://localhost:4000',
+    command: 'npm run dev',
+    port: 3001,
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
-    env: {
-      NEXT_PRIVATE_LOCAL_WEBPACK: 'true',
-      PORT: '4000'
-    }
+    timeout: 120000,
   },
-}); 
+};
+
+export default config; 

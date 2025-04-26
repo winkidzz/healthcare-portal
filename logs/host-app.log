@@ -1,0 +1,43 @@
+
+> @healthcare-portal/host-app@0.1.0 dev
+> NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3000
+
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3000
+  - Experiments (use with caution):
+    · esmExternals
+
+ ✓ Starting...
+[ Module Federation Manifest Plugin ] Manifest will use absolute path resolution via its host at runtime, reason: publicPath='auto'
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+ ✓ Ready in 1351ms
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+ ⨯ ./src/pages/index.tsx:3:1
+Module not found: Can't resolve '@/utils/logger'
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m[33m,[39m { [33mReactNode[39m[33m,[39m useEffect } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m dynamic [36mfrom[39m [32m'next/dynamic'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m logger [36mfrom[39m [32m'@/utils/logger'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m[0m
+[0m [90m 5 |[39m [36minterface[39m [33mPreferencesProviderProps[39m {[0m
+[0m [90m 6 |[39m   children[33m:[39m [33mReactNode[39m[33m;[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+[ Module Federation Manifest Plugin ] Manifest will use absolute path resolution via its host at runtime, reason: publicPath='auto'
+ ○ Compiling / ...
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+ ⨯ ./src/pages/index.tsx:3:1
+Module not found: Can't resolve '@/utils/logger'
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m[33m,[39m { [33mReactNode[39m[33m,[39m useEffect } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m dynamic [36mfrom[39m [32m'next/dynamic'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m logger [36mfrom[39m [32m'@/utils/logger'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m[0m
+[0m [90m 5 |[39m [36minterface[39m [33mPreferencesProviderProps[39m {[0m
+[0m [90m 6 |[39m   children[33m:[39m [33mReactNode[39m[33m;[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ GET / 500 in 859ms
+[?25h

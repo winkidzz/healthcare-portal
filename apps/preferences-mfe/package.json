@@ -3,35 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--trace-warnings' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
-    "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true NEXT_PUBLIC_API_URL=http://localhost:8080/api next dev -p 3002",
+    "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=${PORT:-3001} next dev",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "stop": "lsof -i :${PORT:-3001} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true",
+    "start": "npm run stop && next start -p ${PORT:-3001}",
     "lint": "next lint",
-    "test": "lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=4000 npx playwright test",
-    "test:ci": "PORT=4000 npx playwright test",
+    "test": "lsof -i :${TEST_PORT:-3001} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=${TEST_PORT:-3001} npx playwright test",
+    "test:ci": "PORT=${TEST_PORT:-3001} npx playwright test",
     "diagnose": "node scripts/diagnose.js",
-    "predev": "npm run diagnose"
+    "predev": "npm run diagnose",
+    "test:service": "node scripts/test-service.mjs"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
-    "@healthcare-portal/api-client": "*",
-    "@healthcare-portal/shared-library": "*",
-    "next": "14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-error-boundary": "^5.0.0",
-    "webpack": "^5.99.7"
+    "@headlessui/react": "1.7.18",
+    "@types/winston": "^2.4.4",
+    "next": "^14.2.28",
+    "next-themes": "^0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-error-boundary": "5.0.0",
+    "webpack": "^5.99.7",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19",
-    "autoprefixer": "^10.4.17",
-    "eslint": "^8.56.0",
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.57",
+    "@types/react-dom": "18.2.19",
+    "autoprefixer": "10.4.17",
+    "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
-  }
+    "node-fetch": "^3.3.2",
+    "postcss": "8.4.35",
+    "tailwindcss": "3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "5.3.3"
+  },
+  "type": "module"
 }

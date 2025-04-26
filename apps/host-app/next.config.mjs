@@ -9,7 +9,8 @@ const nextConfig = {
         new NextFederationPlugin({
           name: 'host',
           remotes: {
-            preferences: 'preferences@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+            preferences_mfe: 'preferences_mfe@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+            icdTests: 'icdTests@http://localhost:3001/_next/static/chunks/remoteEntry.js',
           },
           filename: 'static/chunks/remoteEntry.js',
           shared: {

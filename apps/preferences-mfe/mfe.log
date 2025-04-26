@@ -1,0 +1,7 @@
+npm error Lifecycle script `dev-mfe` failed with error:
+npm error workspace @healthcare-portal/preferences-mfe@0.1.0
+npm error location /Users/sanantha/healthcare-portal/apps/preferences-mfe
+npm error Missing script: "dev-mfe"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run --workspace=@healthcare-portal/preferences-mfe@0.1.0

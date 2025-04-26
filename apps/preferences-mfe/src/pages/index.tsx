@@ -1,13 +1,12 @@
-'use client';
+import dynamic from 'next/dynamic';
+import type { FC } from 'react';
 
-import React from 'react';
-import { PreferencesLayout } from '../components/layout/PreferencesLayout';
-import { PreferencesContent } from '../components/preferences/PreferencesContent';
+const ClientHome = dynamic(() => import('@/components/pages/ClientHome').then(mod => mod.ClientHome), {
+  ssr: false,
+});
 
-export default function PreferencesPage() {
-  return (
-    <PreferencesLayout>
-      <PreferencesContent />
-    </PreferencesLayout>
-  );
-} 
+const Home: FC = () => {
+  return <ClientHome />;
+};
+
+export default Home; 

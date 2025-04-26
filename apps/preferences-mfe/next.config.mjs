@@ -3,16 +3,14 @@ import { NextFederationPlugin } from '@module-federation/nextjs-mf';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack(config, { isServer }) {
+  webpack: (config, { isServer }) => {
     config.plugins.push(
       new NextFederationPlugin({
         name: 'preferences_mfe',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './Preferences': {
-            import: './src/components/Preferences',
-            name: 'preferences_component',
-          },
+          './components/Preferences': './src/components/Preferences.tsx',
+          './contexts/PreferencesContext': './src/contexts/PreferencesContext.tsx'
         },
         shared: {
           react: {
@@ -32,8 +30,8 @@ const nextConfig = {
           },
         },
         extraOptions: {
-          automaticAsyncBoundary: true,
           skipSharingNextInternals: true,
+          automaticAsyncBoundary: true,
         },
       })
     );

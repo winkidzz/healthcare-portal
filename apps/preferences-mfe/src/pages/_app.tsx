@@ -1,14 +1,26 @@
+'use client';
+
 import type { AppProps } from 'next/app';
-import { StrictMode } from 'react';
-import { AuthProvider } from '@healthcare-portal/shared-library';
-import '../styles/globals.css';
+import dynamic from 'next/dynamic';
+import '@/styles/globals.css';
+
+const ClientProviders = dynamic(
+  () => import('@/providers/ClientProviders').then(mod => mod.ClientProviders),
+  { ssr: false }
+);
+
+const ClientHead = dynamic(
+  () => import('@/components/common/ClientHead').then(mod => mod.ClientHead),
+  { ssr: false }
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <StrictMode>
-      <AuthProvider value={{ user: null, isLoading: false, error: null }}>
+    <>
+      <ClientHead />
+      <ClientProviders>
         <Component {...pageProps} />
-      </AuthProvider>
-    </StrictMode>
+      </ClientProviders>
+    </>
   );
 } 

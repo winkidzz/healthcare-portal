@@ -1,11 +1,16 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function checkDependencies() {
   console.log('Checking dependencies...');
   try {
-    const packageJson = require('../package.json');
+    const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
     const nodeModules = path.join(__dirname, '../node_modules');
     
     if (!fs.existsSync(nodeModules)) {

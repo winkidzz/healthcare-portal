@@ -4,9 +4,9 @@ export interface User {
   email: string;
   provider: string;
   lastUpdated: string;
-  preferences: {
-    emailNotifications: boolean;
-    smsNotifications: boolean;
-    darkMode: boolean;
+  preferences?: {
+    notifications: boolean;
+    theme: 'light' | 'dark';
+    language: string;
   };
 } 

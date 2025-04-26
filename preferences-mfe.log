@@ -1,0 +1,168 @@
+
+> @healthcare-portal/preferences-mfe@0.1.0 predev
+> npm run diagnose
+
+
+> @healthcare-portal/preferences-mfe@0.1.0 diagnose
+> node scripts/diagnose.js
+
+🔍 Starting diagnostics...
+
+
+📋 Dependencies check:
+Checking dependencies...
+⚠️ Multiple React installations detected. This may cause issues.
+
+📋 Build files check:
+Checking build files...
+
+📋 Ports check:
+Checking ports...
+✅ Port 3002 is available
+✅ Port 4000 is available
+
+🏁 Diagnostics complete.
+
+✅ All checks passed.
+
+> @healthcare-portal/preferences-mfe@0.1.0 dev
+> NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true NEXT_PUBLIC_API_URL=http://localhost:8080/api next dev -p 3002
+
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3002
+  - Experiments (use with caution):
+    · esmExternals
+
+ ✓ Starting...
+(node:59751) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ Module Federation Manifest Plugin ] Manifest will use absolute path resolution via its host at runtime, reason: publicPath='auto'
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Ready in 2.2s
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+
+warn - The `content` option in your Tailwind CSS configuration is missing or empty.
+warn - Configure your content sources or your generated CSS will be missing styles.
+warn - https://tailwindcss.com/docs/content-configuration
+ ○ Compiling /_error ...
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /_error in 774ms (422 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /src/middleware in 66ms (72 modules)
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'same-origin',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'same-origin',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /preferences in 324ms (522 modules)
+ GET /preferences 200 in 327ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'same-origin',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET /preferences 200 in 3ms
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /api/preferences in 214ms (363 modules)
+ GET /api/preferences 200 in 228ms
+ GET /api/preferences 200 in 230ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'same-origin',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET /preferences 200 in 29ms
+2025-04-26 18:45:19 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","sec-fetch-dest":"empty","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","accept":"*/*","referer":"http://localhost:3002/preferences","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:45:19 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","sec-fetch-dest":"empty","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","accept":"*/*","referer":"http://localhost:3002/preferences","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:45:19 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 200 in 30ms
+2025-04-26 18:45:19 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 200 in 32ms
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled in 134ms (678 modules)

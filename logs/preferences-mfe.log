@@ -1,0 +1,64 @@
+
+> @healthcare-portal/preferences-mfe@0.1.0 predev
+> npm run diagnose
+
+
+> @healthcare-portal/preferences-mfe@0.1.0 diagnose
+> node scripts/diagnose.js
+
+🔍 Starting diagnostics...
+
+
+📋 Dependencies check:
+Checking dependencies...
+⚠️ Multiple React installations detected. This may cause issues.
+
+📋 Build files check:
+Checking build files...
+
+📋 Ports check:
+Checking ports...
+✅ Port 3002 is available
+✅ Port 4000 is available
+
+🏁 Diagnostics complete.
+
+✅ All checks passed.
+
+> @healthcare-portal/preferences-mfe@0.1.0 dev
+> NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002
+
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3002
+  - Experiments (use with caution):
+    · esmExternals
+
+ ✓ Starting...
+(node:58637) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ Module Federation Manifest Plugin ] Manifest will use absolute path resolution via its host at runtime, reason: publicPath='auto'
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Ready in 1654ms
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /src/middleware in 139ms (208 modules)
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/',
+  headers: {
+  accept: '*/*',
+  host: 'localhost:3002',
+  user-agent: 'curl/8.7.1',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled / in 406ms (493 modules)
+ GET / 200 in 475ms
+[?25h

@@ -1,0 +1,6 @@
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/service/UserPreferencesService.java
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/controller/UserPreferencesController.java
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/config/WebSecurityConfig.java
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/PreferencesServiceApplication.java
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/model/UserPreferences.java
+/Users/sanantha/healthcare-portal/services/preferences-service/src/main/java/com/healthcare/portal/preferences/repository/UserPreferencesRepository.java

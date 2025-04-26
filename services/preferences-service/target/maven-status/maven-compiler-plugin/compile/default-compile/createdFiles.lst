@@ -1,0 +1,8 @@
+com/healthcare/portal/preferences/service/UserPreferencesService.class
+com/healthcare/portal/preferences/PreferencesServiceApplication.class
+com/healthcare/portal/preferences/model/UserPreferences$SecurityPreferences.class
+com/healthcare/portal/preferences/config/WebSecurityConfig.class
+com/healthcare/portal/preferences/controller/UserPreferencesController.class
+com/healthcare/portal/preferences/model/UserPreferences.class
+com/healthcare/portal/preferences/model/UserPreferences$NotificationPreferences.class
+com/healthcare/portal/preferences/repository/UserPreferencesRepository.class
