@@ -7,3 +7,6 @@
 [submodule "icd-tests-mfe"]
 	path = icd-tests-mfe
 	url = https://github.com/winkidzz/healthcare-portal-icd-tests-mfe.git
+[submodule "icd-tests"]
+	path = icd-tests
+	url = https://github.com/your-username/icd-tests.git
