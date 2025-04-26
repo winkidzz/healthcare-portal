@@ -1,16 +1,10 @@
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '../styles/globals.css';
 import Navigation from '../components/Navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Healthcare App',
-  description: 'A modern healthcare application with micro-frontends',
-};
-
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
