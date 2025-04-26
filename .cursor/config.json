@@ -126,5 +126,32 @@
       "sharedLibrary": "shared-library",
       "headlessCore": "headless-core"
     }
+  },
+  "editor": {
+    "formatOnSave": true,
+    "defaultFormatter": "prettier"
+  },
+  "ai": {
+    "enabled": true,
+    "suggestions": {
+      "enabled": true,
+      "context": "healthcare"
+    },
+    "codeReview": {
+      "enabled": true,
+      "rules": {
+        "security": true,
+        "performance": true,
+        "accessibility": true
+      }
+    }
+  },
+  "projects": {
+    "hostApp": "apps/host-app",
+    "preferencesMfe": "apps/preferences-mfe",
+    "icdTestsMfe": "apps/icd-tests-mfe",
+    "sharedLibrary": "packages/shared-library",
+    "designSystem": "packages/design-system",
+    "apiClient": "packages/api-client"
   }
 } 

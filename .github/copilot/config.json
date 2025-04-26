@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "healthcare": {
+      "enabled": true,
+      "context": "healthcare",
+      "suggestions": {
+        "enabled": true,
+        "maxSuggestions": 10
+      },
+      "filters": {
+        "security": true,
+        "compliance": ["HIPAA", "GDPR"],
+        "performance": true
+      }
+    }
+  },
+  "ignore": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "coverage"
+  ]
+} 

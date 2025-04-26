@@ -1,31 +1,18 @@
 {
-  "name": "host-app",
+  "name": "healthcare-portal",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
-    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true next start",
-    "lint": "next lint",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
-  },
-  "dependencies": {
-    "@module-federation/nextjs-mf": "^8.8.4",
-    "next": "14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "webpack": "^5.99.7"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "@playwright/test": "^1.42.1",
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.0.0"
+    "turbo": "^1.12.3"
   }
 }

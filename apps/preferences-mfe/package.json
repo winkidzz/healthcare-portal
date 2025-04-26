@@ -1,0 +1,33 @@
+{
+  "name": "@healthcare-portal/preferences-mfe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=3002 next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=4000 npx playwright test"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@healthcare-portal/api-client": "*",
+    "@healthcare-portal/shared-library": "*",
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^5.0.0",
+    "webpack": "^5.99.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}
