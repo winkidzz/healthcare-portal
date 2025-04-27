@@ -31,7 +31,7 @@ export const PreferencesProvider = dynamic<PreferencesProviderProps>(() => {
     })
     .catch(error => {
       console.error('Failed to load PreferencesProvider module:', error);
-      return () => ({ children }) => <>{children}</>; // Return a no-op provider on failure
+      return () => ({ children }: PreferencesProviderProps) => <>{children}</>;
     });
 }, {
   ssr: false,
@@ -43,10 +43,10 @@ export const PreferencesProvider = dynamic<PreferencesProviderProps>(() => {
 
 export const Preferences = dynamic(() => {
   console.log('Loading Preferences module');
-  return loadWithRetry(() => import('preferences_mfe/components/Preferences'))
+  return loadWithRetry(() => import('preferences_mfe/pages/preferences'))
     .then(mod => {
       console.log('Preferences module loaded successfully');
-      return mod.Preferences;
+      return mod.default;
     })
     .catch(error => {
       console.error('Failed to load Preferences module:', error);
@@ -89,12 +89,20 @@ export const loadICDTestsMFE = async () => {
       // Show loading state
       container.innerHTML = '<div class="loading">Loading ICD tests...</div>';
 
-      const { mount: mountICDTests, unmount: unmountICDTests } = await import('icdTests/ICDTests');
+      const { default: ICDTests } = await import('icd_tests_mfe/ICDTests');
       
-      // Store unmount function for cleanup
-      (window as any).unmountICDTests = unmountICDTests;
+      // Create a React root and render the component
+      const root = document.createElement('div');
+      container.innerHTML = '';
+      container.appendChild(root);
       
-      mountICDTests(container);
+      const React = await import('react');
+      const ReactDOM = await import('react-dom/client');
+      const reactRoot = ReactDOM.createRoot(root);
+      reactRoot.render(React.createElement(ICDTests));
+      
+      // Store root for cleanup
+      (window as any).icdTestsRoot = reactRoot;
     } catch (error) {
       console.error('Failed to load ICD tests MFE:', error);
       const container = document.getElementById('icd-tests-mfe');
