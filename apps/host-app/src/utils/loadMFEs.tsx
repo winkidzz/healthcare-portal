@@ -6,16 +6,32 @@ interface PreferencesProviderProps {
   children: ReactNode;
 }
 
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000;
+
+const loadWithRetry = async (importFn: () => Promise<any>, retries = MAX_RETRIES) => {
+  try {
+    return await importFn();
+  } catch (error) {
+    if (retries > 0) {
+      console.log(`Retrying import, ${retries} attempts remaining...`);
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+      return loadWithRetry(importFn, retries - 1);
+    }
+    throw error;
+  }
+};
+
 export const PreferencesProvider = dynamic<PreferencesProviderProps>(() => {
   console.log('Loading PreferencesProvider module');
-  return import('preferences_mfe/contexts/PreferencesContext')
+  return loadWithRetry(() => import('preferences_mfe/contexts/PreferencesContext'))
     .then(mod => {
       console.log('PreferencesProvider module loaded successfully');
       return mod.PreferencesProvider;
     })
     .catch(error => {
       console.error('Failed to load PreferencesProvider module:', error);
-      throw error;
+      return () => ({ children }) => <>{children}</>; // Return a no-op provider on failure
     });
 }, {
   ssr: false,
@@ -27,14 +43,14 @@ export const PreferencesProvider = dynamic<PreferencesProviderProps>(() => {
 
 export const Preferences = dynamic(() => {
   console.log('Loading Preferences module');
-  return import('preferences_mfe/components/Preferences')
+  return loadWithRetry(() => import('preferences_mfe/components/Preferences'))
     .then(mod => {
       console.log('Preferences module loaded successfully');
       return mod.Preferences;
     })
     .catch(error => {
       console.error('Failed to load Preferences module:', error);
-      throw error;
+      return () => <div>Failed to load preferences. Please try again later.</div>;
     });
 }, {
   ssr: false,
@@ -52,22 +68,11 @@ export const loadPreferencesMFE = async () => {
         console.error('Preferences MFE container not found');
         return;
       }
-
-      // Show loading state
-      container.innerHTML = '<div class="loading">Loading preferences...</div>';
-
-      const { mount: mountPreferences, unmount: unmountPreferences } = await import('preferences_mfe/components/Preferences');
-      
-      // Store unmount function for cleanup
-      (window as any).unmountPreferences = unmountPreferences;
-      
-      mountPreferences(container);
+      console.log('Loading preferences MFE...');
+      // The remoteEntry is automatically loaded by Module Federation
+      console.log('Preferences MFE loaded successfully');
     } catch (error) {
       console.error('Failed to load preferences MFE:', error);
-      const container = document.getElementById('preferences-mfe');
-      if (container) {
-        container.innerHTML = '<div class="error">Failed to load preferences</div>';
-      }
     }
   }
 };

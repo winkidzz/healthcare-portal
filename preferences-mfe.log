@@ -166,3 +166,168 @@ warn - https://tailwindcss.com/docs/content-configuration
 [ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
 [ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
  ✓ Compiled in 134ms (678 modules)
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'none',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET /preferences 200 in 52ms
+2025-04-26 18:47:56 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:47:56 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:47:56 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 39ms
+2025-04-26 18:47:56 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 41ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'none',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled / in 253ms (682 modules)
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  referer: 'http://localhost:3002/preferences',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'same-origin',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET / 200 in 275ms
+ GET /preferences 200 in 4ms
+2025-04-26 18:48:01 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:48:01 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:48:01 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 30ms
+2025-04-26 18:48:01 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 32ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'none',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET / 200 in 3ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/',
+  headers: {
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=0, i',
+  sec-fetch-dest: 'document',
+  sec-fetch-mode: 'navigate',
+  sec-fetch-site: 'none',
+  upgrade-insecure-requests: '1',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET / 200 in 11ms
+[Request] {
+  method: 'GET',
+  url: 'http://localhost:3002/preferences',
+  headers: {
+  accept: '*/*',
+  accept-encoding: 'gzip, deflate',
+  accept-language: 'en-US,en;q=0.9',
+  connection: 'keep-alive',
+  host: 'localhost:3002',
+  priority: 'u=3, i',
+  referer: 'http://localhost:3002/',
+  sec-fetch-dest: 'empty',
+  sec-fetch-mode: 'cors',
+  sec-fetch-site: 'same-origin',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  x-forwarded-for: '::1',
+  x-forwarded-host: 'localhost:3002',
+  x-forwarded-port: '3002',
+  x-forwarded-proto: 'http',
+  x-nextjs-data: '1'
+}
+}
+[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
+ GET /_next/data/development/preferences.json 200 in 3ms
+2025-04-26 18:50:58 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:50:58 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","accept":"*/*","sec-fetch-site":"same-origin","if-none-match":"\"ys0cpim7v54x\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15","referer":"http://localhost:3002/preferences","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
+2025-04-26 18:50:58 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 10ms
+2025-04-26 18:50:58 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"dark","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
+ GET /api/preferences 304 in 11ms
+[?25h

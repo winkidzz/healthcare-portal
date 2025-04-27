@@ -9,8 +9,8 @@ const nextConfig = {
         name: 'preferences_mfe',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './components/Preferences': './src/components/Preferences.tsx',
-          './contexts/PreferencesContext': './src/contexts/PreferencesContext.tsx'
+          'preferences_mfe/components/Preferences': './src/components/Preferences.tsx',
+          'preferences_mfe/contexts/PreferencesContext': './src/contexts/PreferencesContext.tsx'
         },
         shared: {
           react: {
@@ -40,6 +40,27 @@ const nextConfig = {
   },
   experimental: {
     esmExternals: 'loose',
+  },
+  async headers() {
+    return [
+      {
+        source: '/_next/static/chunks/remoteEntry.js',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/_next/static/chunks/remoteEntry.js',
+        destination: '/_next/static/chunks/remoteEntry.js',
+      },
+    ];
   },
 };
 

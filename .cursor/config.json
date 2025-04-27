@@ -13,24 +13,32 @@
     "rules": {
       "portConfiguration": {
         "hostApp": 3000,
-        "preferencesMfe": 3001,
-        "icdTestsMfe": 3002
+        "preferencesMfe": 3002,
+        "icdTestsMfe": 3001,
+        "reservedPorts": [3000, 3001, 3002],
+        "portConflictResolution": {
+          "action": "kill",
+          "timeout": 5000
+        }
       },
       "startupSequence": [
         {
-          "name": "hostApp",
-          "command": "cd host-app && NEXT_PRIVATE_LOCAL_WEBPACK=true npm run dev",
-          "port": 3000
-        },
-        {
           "name": "preferencesMfe",
-          "command": "cd preferences-mfe && npm run dev",
-          "port": 3001
+          "command": "cd apps/preferences-mfe && lsof -ti:3002 | xargs kill -9 2>/dev/null || true && NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true NEXT_PUBLIC_API_URL=http://localhost:8080/api next dev -p 3002",
+          "port": 3002,
+          "healthCheck": "http://localhost:3002/_next/static/chunks/remoteEntry.js"
         },
         {
           "name": "icdTestsMfe",
-          "command": "cd icd-tests-mfe && npm run dev",
-          "port": 3002
+          "command": "cd apps/icd-tests-mfe && lsof -ti:3001 | xargs kill -9 2>/dev/null || true && npm run dev",
+          "port": 3001,
+          "healthCheck": "http://localhost:3001/_next/static/chunks/remoteEntry.js"
+        },
+        {
+          "name": "hostApp",
+          "command": "cd apps/host-app && lsof -ti:3000 | xargs kill -9 2>/dev/null || true && NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3000",
+          "port": 3000,
+          "healthCheck": "http://localhost:3000"
         }
       ],
       "buildTools": {
@@ -58,29 +66,60 @@
       "enabled": true,
       "schema": {
         "type": "object",
-        "required": ["thought", "nextThoughtNeeded", "thoughtNumber", "totalThoughts"],
+        "required": [
+          "thought",
+          "nextThoughtNeeded",
+          "thoughtNumber",
+          "totalThoughts"
+        ],
         "properties": {
           "thought": {
             "type": "string",
+            "description": "The current thinking step",
             "minLength": 1
           },
           "nextThoughtNeeded": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether another thought step is needed",
+            "default": false,
+            "enum": [true, false]
           },
           "thoughtNumber": {
             "type": "integer",
+            "description": "Current thought number",
             "minimum": 1
           },
           "totalThoughts": {
             "type": "integer",
+            "description": "Estimated total thoughts needed",
             "minimum": 1
           }
         },
-        "additionalProperties": false
+        "additionalProperties": true
+      },
+      "typeCoercion": {
+        "booleans": {
+          "true": [true, "true", 1],
+          "false": [false, "false", 0]
+        }
       },
       "validation": {
         "enabled": true,
-        "strict": true
+        "strict": true,
+        "rules": [
+          {
+            "condition": "thoughtNumber <= totalThoughts",
+            "message": "Thought number cannot exceed total thoughts"
+          },
+          {
+            "condition": "!isRevision || (isRevision && revisesThought)",
+            "message": "Revision must specify which thought is being revised"
+          },
+          {
+            "condition": "!branchFromThought || (branchFromThought && branchId)",
+            "message": "Branch must have an identifier"
+          }
+        ]
       },
       "examples": [
         {

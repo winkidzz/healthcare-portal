@@ -9,8 +9,8 @@ const nextConfig = {
         new NextFederationPlugin({
           name: 'host',
           remotes: {
-            preferences_mfe: 'preferences_mfe@http://localhost:3002/_next/static/chunks/remoteEntry.js',
-            icdTests: 'icdTests@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+            preferences_mfe: `preferences_mfe@http://localhost:3002/_next/static/chunks/remoteEntry.js`,
+            icdTests: `icdTests@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
           },
           filename: 'static/chunks/remoteEntry.js',
           shared: {
@@ -33,6 +33,9 @@ const nextConfig = {
           extraOptions: {
             skipSharingNextInternals: true,
             automaticAsyncBoundary: true,
+            exposePages: true,
+            enableUrlLoader: true,
+            remoteType: 'var',
           },
         })
       );
@@ -41,6 +44,28 @@ const nextConfig = {
   },
   experimental: {
     esmExternals: 'loose',
+  },
+  transpilePackages: ['@healthcare-portal/shared-library'],
+  async headers() {
+    return [
+      {
+        source: '/_next/static/chunks/remoteEntry.js',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/_next/static/chunks/remoteEntry.js',
+        destination: 'http://localhost:3002/_next/static/chunks/remoteEntry.js',
+      },
+    ];
   },
 };
 
