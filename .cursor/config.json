@@ -2,6 +2,9 @@
   "memoryBank": {
     "enabled": true,
     "path": "memory-bank",
+    "autoUpdate": true,
+    "autoRead": true,
+    "updateInterval": 600000,
     "files": {
       "rules": "rules.md",
       "activeContext": "activeContext.md",
@@ -17,28 +20,125 @@
         "icdTestsMfe": 3001,
         "reservedPorts": [3000, 3001, 3002],
         "portConflictResolution": {
-          "action": "kill",
-          "timeout": 5000
+          "action": "gracefulShutdown",
+          "timeout": 5000,
+          "retryAttempts": 3,
+          "retryDelay": 2000,
+          "shutdownSequence": {
+            "preferencesMfe": {
+              "findProcess": "lsof -ti:3002",
+              "gracefulStop": "kill -15",
+              "forceStop": "kill -9",
+              "waitTime": 2000,
+              "diagnostics": "npm run diagnose"
+            },
+            "icdTestsMfe": {
+              "findProcess": "lsof -ti:3001",
+              "gracefulStop": "kill -15",
+              "forceStop": "kill -9",
+              "waitTime": 2000,
+              "diagnostics": "npm run diagnose"
+            },
+            "hostApp": {
+              "findProcess": "lsof -ti:3000",
+              "gracefulStop": "kill -15",
+              "forceStop": "kill -9",
+              "waitTime": 2000,
+              "diagnostics": "npm run diagnose"
+            }
+          }
         }
       },
       "startupSequence": [
         {
           "name": "preferencesMfe",
-          "command": "cd apps/preferences-mfe && lsof -ti:3002 | xargs kill -9 2>/dev/null || true && NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true NEXT_PUBLIC_API_URL=http://localhost:8080/api next dev -p 3002",
+          "preStartChecks": {
+            "portCheck": {
+              "command": "lsof -i :3002",
+              "timeout": 5000,
+              "retryAttempts": 3,
+              "onConflict": {
+                "gracefulShutdown": true,
+                "command": "npm run stop && sleep 2"
+              }
+            },
+            "healthCheck": {
+              "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          },
+          "command": "cd apps/preferences-mfe && npm run dev",
           "port": 3002,
-          "healthCheck": "http://localhost:3002/_next/static/chunks/remoteEntry.js"
+          "postStartChecks": {
+            "healthCheck": {
+              "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          }
         },
         {
           "name": "icdTestsMfe",
-          "command": "cd apps/icd-tests-mfe && lsof -ti:3001 | xargs kill -9 2>/dev/null || true && npm run dev",
+          "preStartChecks": {
+            "portCheck": {
+              "command": "lsof -i :3001",
+              "timeout": 5000,
+              "retryAttempts": 3,
+              "onConflict": {
+                "gracefulShutdown": true,
+                "command": "npm run stop && sleep 2"
+              }
+            },
+            "healthCheck": {
+              "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          },
+          "command": "cd apps/icd-tests-mfe && npm run dev",
           "port": 3001,
-          "healthCheck": "http://localhost:3001/_next/static/chunks/remoteEntry.js"
+          "postStartChecks": {
+            "healthCheck": {
+              "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          }
         },
         {
           "name": "hostApp",
-          "command": "cd apps/host-app && lsof -ti:3000 | xargs kill -9 2>/dev/null || true && NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3000",
+          "preStartChecks": {
+            "portCheck": {
+              "command": "lsof -i :3000",
+              "timeout": 5000,
+              "retryAttempts": 3,
+              "onConflict": {
+                "gracefulShutdown": true,
+                "command": "npm run stop && sleep 2"
+              }
+            },
+            "healthCheck": {
+              "url": "http://localhost:3000",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          },
+          "command": "cd apps/host-app && npm run dev",
           "port": 3000,
-          "healthCheck": "http://localhost:3000"
+          "postStartChecks": {
+            "healthCheck": {
+              "url": "http://localhost:3000",
+              "timeout": 10000,
+              "retryAttempts": 5,
+              "retryDelay": 2000
+            }
+          }
         }
       ],
       "buildTools": {

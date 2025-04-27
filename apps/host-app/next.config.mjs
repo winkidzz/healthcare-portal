@@ -55,6 +55,14 @@ const nextConfig = {
             key: 'Access-Control-Allow-Origin',
             value: '*',
           },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
+          },
         ],
       },
     ];
@@ -64,6 +72,10 @@ const nextConfig = {
       {
         source: '/_next/static/chunks/remoteEntry.js',
         destination: 'http://localhost:3002/_next/static/chunks/remoteEntry.js',
+      },
+      {
+        source: '/_next/static/chunks/:path*',
+        destination: 'http://localhost:3002/_next/static/chunks/:path*',
       },
     ];
   },
