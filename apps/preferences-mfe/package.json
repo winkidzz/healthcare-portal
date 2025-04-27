@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 NEXT_PRIVATE_LOCAL_WEBPACK=true NEXT_PUBLIC_API_URL=http://localhost:8080/api next dev -p 3002",
+    "dev": "NODE_OPTIONS='--max-old-space-size=4096' NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002",
     "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=${PORT:-3001} next dev",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "stop": "lsof -i :${PORT:-3001} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true",

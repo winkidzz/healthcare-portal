@@ -4,42 +4,29 @@ import { NextFederationPlugin } from '@module-federation/nextjs-mf';
 const nextConfig = {
   reactStrictMode: true,
   webpack(config, { isServer }) {
-    if (!isServer) {
-      config.plugins.push(
-        new NextFederationPlugin({
-          name: 'host',
-          remotes: {
-            preferences_mfe: `preferences_mfe@http://localhost:3002/_next/static/chunks/remoteEntry.js`,
-            icdTests: `icdTests@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
+    config.plugins.push(
+      new NextFederationPlugin({
+        name: 'host_app',
+        filename: 'static/chunks/remoteEntry.js',
+        remotes: {
+          preferences_mfe: `preferences_mfe@${process.env.PREFERENCES_MFE_URL || 'http://localhost:3002'}/_next/static/chunks/remoteEntry.js`,
+          icd_tests_mfe: `icd_tests_mfe@${process.env.ICD_TESTS_MFE_URL || 'http://localhost:3001'}/_next/static/chunks/remoteEntry.js`,
+        },
+        shared: {
+          react: {
+            singleton: true,
+            requiredVersion: false,
           },
-          filename: 'static/chunks/remoteEntry.js',
-          shared: {
-            react: {
-              singleton: true,
-              requiredVersion: false,
-              eager: true,
-            },
-            'react-dom': {
-              singleton: true,
-              requiredVersion: false,
-              eager: true,
-            },
-            '@healthcare-portal/shared-library': {
-              singleton: true,
-              requiredVersion: false,
-              eager: true,
-            },
+          'react-dom': {
+            singleton: true,
+            requiredVersion: false,
           },
-          extraOptions: {
-            skipSharingNextInternals: true,
-            automaticAsyncBoundary: true,
-            exposePages: true,
-            enableUrlLoader: true,
-            remoteType: 'var',
-          },
-        })
-      );
-    }
+        },
+        extraOptions: {
+          automaticAsyncBoundary: true,
+        },
+      })
+    );
     return config;
   },
   experimental: {

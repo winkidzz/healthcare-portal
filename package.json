@@ -2,18 +2,22 @@
   "name": "healthcare-portal",
   "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ],
+    "nohoist": [
+      "**/react",
+      "**/react-dom"
+    ]
+  },
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "start": "turbo run start",
-    "lint": "turbo run lint"
+    "dev": "concurrently \"cd apps/preferences-mfe && npm run dev\" \"cd apps/icd-tests-mfe && npm run dev\" \"cd apps/host-app && npm run dev\"",
+    "build": "npm run build --workspaces",
+    "start": "concurrently \"cd apps/preferences-mfe && npm run start\" \"cd apps/icd-tests-mfe && npm run start\" \"cd apps/host-app && npm run start\""
   },
   "devDependencies": {
-    "turbo": "^1.12.3"
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "@module-federation/nextjs-mf": "^8.8.25",
