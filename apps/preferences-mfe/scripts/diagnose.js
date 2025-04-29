@@ -11,15 +11,15 @@ function checkDependencies() {
   console.log('Checking dependencies...');
   try {
     const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
-    const nodeModules = path.join(__dirname, '../node_modules');
+    const rootNodeModules = path.join(__dirname, '../../../node_modules');
     
-    if (!fs.existsSync(nodeModules)) {
-      console.error('❌ node_modules not found. Run npm install');
+    if (!fs.existsSync(rootNodeModules)) {
+      console.error('❌ Root node_modules not found. Run npm install from the root directory');
       return false;
     }
 
-    // Check for duplicate React installations
-    const findReact = "find ../node_modules -type f -name 'package.json' | xargs grep -l 'react'";
+    // Check for duplicate React installations in root node_modules
+    const findReact = "find ../../../node_modules -type f -name 'package.json' | xargs grep -l 'react'";
     const reactInstalls = execSync(findReact, { cwd: __dirname }).toString();
     if (reactInstalls.split('\n').length > 2) {
       console.warn('⚠️ Multiple React installations detected. This may cause issues.');

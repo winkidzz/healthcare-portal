@@ -1,259 +1,282 @@
 {
   "memoryBank": {
     "enabled": true,
-    "path": "memory-bank",
-    "autoUpdate": true,
-    "autoRead": true,
-    "updateInterval": 600000,
-    "files": {
-      "rules": "rules.md",
-      "activeContext": "activeContext.md",
-      "techContext": "techContext.md",
-      "systemPatterns": "systemPatterns.md",
-      "productContext": "productContext.md",
-      "projectBrief": "projectbrief.md"
-    },
-    "rules": {
-      "portConfiguration": {
-        "hostApp": 3000,
-        "preferencesMfe": 3002,
-        "icdTestsMfe": 3001,
-        "reservedPorts": [3000, 3001, 3002],
-        "portConflictResolution": {
-          "action": "gracefulShutdown",
-          "timeout": 5000,
-          "retryAttempts": 3,
-          "retryDelay": 2000,
-          "shutdownSequence": {
-            "preferencesMfe": {
-              "findProcess": "lsof -ti:3002",
-              "gracefulStop": "kill -15",
-              "forceStop": "kill -9",
-              "waitTime": 2000,
-              "diagnostics": "npm run diagnose"
+    "type": "hybrid",
+    "providers": {
+      "sequential": {
+        "enabled": true,
+        "path": "memory-bank",
+        "autoUpdate": true,
+        "autoRead": true,
+        "updateInterval": 600000,
+        "files": {
+          "rules": "rules.md",
+          "activeContext": "activeContext.md",
+          "techContext": "techContext.md",
+          "systemPatterns": "systemPatterns.md",
+          "productContext": "productContext.md",
+          "projectBrief": "projectbrief.md"
+        },
+        "rules": {
+          "portConfiguration": {
+            "hostApp": 3000,
+            "preferencesMfe": 3002,
+            "icdTestsMfe": 3001,
+            "reservedPorts": [3000, 3001, 3002],
+            "portConflictResolution": {
+              "action": "gracefulShutdown",
+              "timeout": 5000,
+              "retryAttempts": 3,
+              "retryDelay": 2000,
+              "shutdownSequence": {
+                "preferencesMfe": {
+                  "findProcess": "lsof -ti:3002",
+                  "gracefulStop": "kill -15",
+                  "forceStop": "kill -9",
+                  "waitTime": 2000,
+                  "diagnostics": "npm run diagnose"
+                },
+                "icdTestsMfe": {
+                  "findProcess": "lsof -ti:3001",
+                  "gracefulStop": "kill -15",
+                  "forceStop": "kill -9",
+                  "waitTime": 2000,
+                  "diagnostics": "npm run diagnose"
+                },
+                "hostApp": {
+                  "findProcess": "lsof -ti:3000",
+                  "gracefulStop": "kill -15",
+                  "forceStop": "kill -9",
+                  "waitTime": 2000,
+                  "diagnostics": "npm run diagnose"
+                }
+              }
+            }
+          },
+          "startupSequence": [
+            {
+              "name": "preferencesMfe",
+              "preStartChecks": {
+                "portCheck": {
+                  "command": "lsof -i :3002",
+                  "timeout": 5000,
+                  "retryAttempts": 3,
+                  "onConflict": {
+                    "gracefulShutdown": true,
+                    "command": "npm run stop && sleep 2"
+                  }
+                },
+                "healthCheck": {
+                  "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              },
+              "command": "cd apps/preferences-mfe && npm run dev",
+              "port": 3002,
+              "postStartChecks": {
+                "healthCheck": {
+                  "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              }
             },
-            "icdTestsMfe": {
-              "findProcess": "lsof -ti:3001",
-              "gracefulStop": "kill -15",
-              "forceStop": "kill -9",
-              "waitTime": 2000,
-              "diagnostics": "npm run diagnose"
+            {
+              "name": "icdTestsMfe",
+              "preStartChecks": {
+                "portCheck": {
+                  "command": "lsof -i :3001",
+                  "timeout": 5000,
+                  "retryAttempts": 3,
+                  "onConflict": {
+                    "gracefulShutdown": true,
+                    "command": "npm run stop && sleep 2"
+                  }
+                },
+                "healthCheck": {
+                  "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              },
+              "command": "cd apps/icd-tests-mfe && npm run dev",
+              "port": 3001,
+              "postStartChecks": {
+                "healthCheck": {
+                  "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              }
             },
+            {
+              "name": "hostApp",
+              "preStartChecks": {
+                "portCheck": {
+                  "command": "lsof -i :3000",
+                  "timeout": 5000,
+                  "retryAttempts": 3,
+                  "onConflict": {
+                    "gracefulShutdown": true,
+                    "command": "npm run stop && sleep 2"
+                  }
+                },
+                "healthCheck": {
+                  "url": "http://localhost:3000",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              },
+              "command": "cd apps/host-app && npm run dev",
+              "port": 3000,
+              "postStartChecks": {
+                "healthCheck": {
+                  "url": "http://localhost:3000",
+                  "timeout": 10000,
+                  "retryAttempts": 5,
+                  "retryDelay": 2000
+                }
+              }
+            }
+          ],
+          "buildTools": {
             "hostApp": {
-              "findProcess": "lsof -ti:3000",
-              "gracefulStop": "kill -15",
-              "forceStop": "kill -9",
-              "waitTime": 2000,
-              "diagnostics": "npm run diagnose"
+              "tool": "webpack",
+              "envVar": "NEXT_PRIVATE_LOCAL_WEBPACK=true"
+            },
+            "microFrontends": {
+              "tool": "turbopack",
+              "flag": "--turbopack"
             }
           }
+        },
+        "documentation": {
+          "updateOnChange": true,
+          "crossReference": true,
+          "maintainConsistency": true
+        },
+        "testing": {
+          "framework": "playwright",
+          "directory": "host-app",
+          "command": "npm run test"
+        },
+        "sequentialThinking": {
+          "enabled": true,
+          "schema": {
+            "type": "object",
+            "required": [
+              "thought",
+              "nextThoughtNeeded",
+              "thoughtNumber",
+              "totalThoughts"
+            ],
+            "properties": {
+              "thought": {
+                "type": "string",
+                "description": "The current thinking step",
+                "minLength": 1
+              },
+              "nextThoughtNeeded": {
+                "type": "boolean",
+                "description": "Whether another thought step is needed",
+                "default": false,
+                "enum": [true, false]
+              },
+              "thoughtNumber": {
+                "type": "integer",
+                "description": "Current thought number",
+                "minimum": 1
+              },
+              "totalThoughts": {
+                "type": "integer",
+                "description": "Estimated total thoughts needed",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": true
+          },
+          "typeCoercion": {
+            "booleans": {
+              "true": [true, "true", 1],
+              "false": [false, "false", 0]
+            }
+          },
+          "validation": {
+            "enabled": true,
+            "strict": true,
+            "rules": [
+              {
+                "condition": "thoughtNumber <= totalThoughts",
+                "message": "Thought number cannot exceed total thoughts"
+              },
+              {
+                "condition": "!isRevision || (isRevision && revisesThought)",
+                "message": "Revision must specify which thought is being revised"
+              },
+              {
+                "condition": "!branchFromThought || (branchFromThought && branchId)",
+                "message": "Branch must have an identifier"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "description": "Basic sequential thinking",
+              "parameters": {
+                "thought": "Analyzing the current project state",
+                "nextThoughtNeeded": true,
+                "thoughtNumber": 1,
+                "totalThoughts": 5
+              }
+            },
+            {
+              "description": "Revision of previous thought",
+              "parameters": {
+                "thought": "Revising previous analysis",
+                "nextThoughtNeeded": true,
+                "thoughtNumber": 2,
+                "totalThoughts": 5,
+                "isRevision": true,
+                "revisesThought": 1
+              }
+            },
+            {
+              "description": "Branching thought process",
+              "parameters": {
+                "thought": "Exploring alternative approach",
+                "nextThoughtNeeded": true,
+                "thoughtNumber": 3,
+                "totalThoughts": 5,
+                "branchFromThought": 2,
+                "branchId": "alternative-1"
+              }
+            }
+          ]
         }
       },
-      "startupSequence": [
-        {
-          "name": "preferencesMfe",
-          "preStartChecks": {
-            "portCheck": {
-              "command": "lsof -i :3002",
-              "timeout": 5000,
-              "retryAttempts": 3,
-              "onConflict": {
-                "gracefulShutdown": true,
-                "command": "npm run stop && sleep 2"
-              }
-            },
-            "healthCheck": {
-              "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          },
-          "command": "cd apps/preferences-mfe && npm run dev",
-          "port": 3002,
-          "postStartChecks": {
-            "healthCheck": {
-              "url": "http://localhost:3002/_next/static/chunks/remoteEntry.js",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          }
-        },
-        {
-          "name": "icdTestsMfe",
-          "preStartChecks": {
-            "portCheck": {
-              "command": "lsof -i :3001",
-              "timeout": 5000,
-              "retryAttempts": 3,
-              "onConflict": {
-                "gracefulShutdown": true,
-                "command": "npm run stop && sleep 2"
-              }
-            },
-            "healthCheck": {
-              "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          },
-          "command": "cd apps/icd-tests-mfe && npm run dev",
-          "port": 3001,
-          "postStartChecks": {
-            "healthCheck": {
-              "url": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          }
-        },
-        {
-          "name": "hostApp",
-          "preStartChecks": {
-            "portCheck": {
-              "command": "lsof -i :3000",
-              "timeout": 5000,
-              "retryAttempts": 3,
-              "onConflict": {
-                "gracefulShutdown": true,
-                "command": "npm run stop && sleep 2"
-              }
-            },
-            "healthCheck": {
-              "url": "http://localhost:3000",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          },
-          "command": "cd apps/host-app && npm run dev",
-          "port": 3000,
-          "postStartChecks": {
-            "healthCheck": {
-              "url": "http://localhost:3000",
-              "timeout": 10000,
-              "retryAttempts": 5,
-              "retryDelay": 2000
-            }
-          }
-        }
-      ],
-      "buildTools": {
-        "hostApp": {
-          "tool": "webpack",
-          "envVar": "NEXT_PRIVATE_LOCAL_WEBPACK=true"
-        },
-        "microFrontends": {
-          "tool": "turbopack",
-          "flag": "--turbopack"
+      "chroma": {
+        "enabled": true,
+        "config": {
+          "host": "localhost",
+          "port": 8000,
+          "collection_name": "cursor_memory",
+          "embedding_model": "all-MiniLM-L6-v2"
         }
       }
     },
-    "documentation": {
-      "updateOnChange": true,
-      "crossReference": true,
-      "maintainConsistency": true
-    },
-    "testing": {
-      "framework": "playwright",
-      "directory": "host-app",
-      "command": "npm run test"
-    },
-    "sequentialThinking": {
-      "enabled": true,
-      "schema": {
-        "type": "object",
-        "required": [
-          "thought",
-          "nextThoughtNeeded",
-          "thoughtNumber",
-          "totalThoughts"
-        ],
-        "properties": {
-          "thought": {
-            "type": "string",
-            "description": "The current thinking step",
-            "minLength": 1
-          },
-          "nextThoughtNeeded": {
-            "type": "boolean",
-            "description": "Whether another thought step is needed",
-            "default": false,
-            "enum": [true, false]
-          },
-          "thoughtNumber": {
-            "type": "integer",
-            "description": "Current thought number",
-            "minimum": 1
-          },
-          "totalThoughts": {
-            "type": "integer",
-            "description": "Estimated total thoughts needed",
-            "minimum": 1
-          }
-        },
-        "additionalProperties": true
-      },
-      "typeCoercion": {
-        "booleans": {
-          "true": [true, "true", 1],
-          "false": [false, "false", 0]
-        }
-      },
-      "validation": {
-        "enabled": true,
-        "strict": true,
-        "rules": [
-          {
-            "condition": "thoughtNumber <= totalThoughts",
-            "message": "Thought number cannot exceed total thoughts"
-          },
-          {
-            "condition": "!isRevision || (isRevision && revisesThought)",
-            "message": "Revision must specify which thought is being revised"
-          },
-          {
-            "condition": "!branchFromThought || (branchFromThought && branchId)",
-            "message": "Branch must have an identifier"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Basic sequential thinking",
-          "parameters": {
-            "thought": "Analyzing the current project state",
-            "nextThoughtNeeded": true,
-            "thoughtNumber": 1,
-            "totalThoughts": 5
-          }
-        },
-        {
-          "description": "Revision of previous thought",
-          "parameters": {
-            "thought": "Revising previous analysis",
-            "nextThoughtNeeded": true,
-            "thoughtNumber": 2,
-            "totalThoughts": 5,
-            "isRevision": true,
-            "revisesThought": 1
-          }
-        },
-        {
-          "description": "Branching thought process",
-          "parameters": {
-            "thought": "Exploring alternative approach",
-            "nextThoughtNeeded": true,
-            "thoughtNumber": 3,
-            "totalThoughts": 5,
-            "branchFromThought": 2,
-            "branchId": "alternative-1"
-          }
-        }
-      ]
+    "integration": {
+      "syncInterval": 300000,
+      "conflictResolution": "chroma_priority",
+      "indexing": {
+        "sequential": ["thought", "context", "metadata"],
+        "chroma": ["embeddings", "metadata", "context"]
+      }
     }
   },
   "projectStructure": {

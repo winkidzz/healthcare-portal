@@ -24,4 +24,5 @@ export const formatName = (firstName: string, lastName: string): string => {
   return `${lastName}, ${firstName}`;
 };
 
-export * from './context'; 
+export * from './context';
+export * from './types'; 

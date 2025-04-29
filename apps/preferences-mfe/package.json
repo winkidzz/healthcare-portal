@@ -4,40 +4,52 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--max-old-space-size=4096' NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002",
-    "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=${PORT:-3001} next dev",
+    "dev:debug": "NODE_OPTIONS='--trace-warnings --inspect' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=${PORT:-3002} next dev",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "stop": "lsof -i :${PORT:-3001} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true",
-    "start": "npm run stop && next start -p ${PORT:-3001}",
+    "stop": "lsof -i :${PORT:-3002} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true",
+    "start": "npm run stop && next start -p ${PORT:-3002}",
     "lint": "next lint",
-    "test": "lsof -i :${TEST_PORT:-3001} | grep LISTEN | awk '{print $2}' | xargs kill -9 2>/dev/null || true && PORT=${TEST_PORT:-3001} npx playwright test",
-    "test:ci": "PORT=${TEST_PORT:-3001} npx playwright test",
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "clean": "rimraf .next",
+    "type-check": "tsc --noEmit",
     "diagnose": "node scripts/diagnose.js",
-    "predev": "npm run diagnose",
-    "test:service": "node scripts/test-service.mjs"
+    "predev": "npm run diagnose"
   },
   "dependencies": {
+    "@healthcare-portal/shared-library": "file:../../packages/shared-library",
     "@headlessui/react": "1.7.18",
     "@types/winston": "^2.4.4",
-    "next": "^14.2.28",
+    "next": "14.1.0",
     "next-themes": "^0.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-error-boundary": "5.0.0",
-    "webpack": "^5.99.7",
+    "webpack": "^5.89.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/react": "^14.2.0",
+    "@types/jest": "^29.5.0",
     "@types/node": "20.11.19",
     "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "node-fetch": "^3.3.2",
     "postcss": "8.4.35",
+    "rimraf": "^5.0.5",
     "tailwindcss": "3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "5.3.3"
   },
-  "type": "module"
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
 }

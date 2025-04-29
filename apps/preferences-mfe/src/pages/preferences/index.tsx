@@ -45,8 +45,17 @@ const PreferencesPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const [isRouterReady, setIsRouterReady] = useState(false);
 
   useEffect(() => {
+    if (router.isReady) {
+      setIsRouterReady(true);
+    }
+  }, [router.isReady]);
+
+  useEffect(() => {
+    if (!isRouterReady) return;
+
     const fetchPreferences = async () => {
       try {
         const data = await preferencesService.getUserPreferences();
@@ -67,7 +76,7 @@ const PreferencesPage: React.FC = () => {
     };
 
     fetchPreferences();
-  }, [router]);
+  }, [isRouterReady, router]);
 
   const handleThemeChange = async (theme: UserPreferences['theme']) => {
     try {

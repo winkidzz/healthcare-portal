@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { preferencesService } from '@/services/preferencesService';
 import type { UserPreferences, Theme } from '@/types/preferences';
@@ -35,6 +35,16 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  const navigateToLogin = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        router.push('/login');
+      } catch (e) {
+        window.location.href = '/login';
+      }
+    }
+  }, [router]);
+
   const refreshPreferences = async () => {
     try {
       setLoading(true);
@@ -44,7 +54,7 @@ export function PreferencesProvider({ children }: PreferencesProviderProps) {
     } catch (err) {
       if (err instanceof Error) {
         if (err.message.includes('Authentication required')) {
-          router.push('/login');
+          navigateToLogin();
         } else {
           setError(err.message);
         }

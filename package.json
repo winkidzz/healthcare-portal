@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "apps/*"
+      "apps/*",
+      "packages/*"
     ],
     "nohoist": [
       "**/react",
@@ -12,16 +13,31 @@
     ]
   },
   "scripts": {
-    "dev": "concurrently \"cd apps/preferences-mfe && npm run dev\" \"cd apps/icd-tests-mfe && npm run dev\" \"cd apps/host-app && npm run dev\"",
-    "build": "npm run build --workspaces",
-    "start": "concurrently \"cd apps/preferences-mfe && npm run start\" \"cd apps/icd-tests-mfe && npm run start\" \"cd apps/host-app && npm run start\""
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "turbo": "^1.12.0"
   },
   "dependencies": {
     "@module-federation/nextjs-mf": "^8.8.25",
     "@module-federation/node": "^2.7.1",
     "esbuild": "^0.25.3"
+  },
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.0.0"
   }
 }

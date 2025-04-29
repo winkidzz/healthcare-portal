@@ -2,6 +2,8 @@
 
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import '@/styles/globals.css';
 
 const ClientProviders = dynamic(
@@ -14,7 +16,23 @@ const ClientHead = dynamic(
   { ssr: false }
 );
 
-export default function App({ Component, pageProps }: AppProps) {
+function AppWrapper({ Component, pageProps }: AppProps) {
+  // Only initialize hooks on the client side
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <>
       <ClientHead />
@@ -23,4 +41,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </ClientProviders>
     </>
   );
-} 
+}
+
+export default AppWrapper; 

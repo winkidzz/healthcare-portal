@@ -1,12 +1,14 @@
-'use client';
-
-import React from 'react';
+import dynamic from 'next/dynamic';
+import { useState, useEffect } from 'react';
 import { Patient } from '@healthcare-portal/shared-library';
 
-const ICDTestsPage = () => {
-  const [patient, setPatient] = React.useState<Patient | null>(null);
+// Client-side only component
+const ICDTestsContent = () => {
+  const [mounted, setMounted] = useState(false);
+  const [patient, setPatient] = useState<Patient | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setMounted(true);
     // Simulate fetching patient data
     setPatient({
       id: '1',
@@ -15,6 +17,10 @@ const ICDTestsPage = () => {
       medicalRecordNumber: 'MRN123456'
     });
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="p-4">
@@ -45,5 +51,10 @@ const ICDTestsPage = () => {
     </div>
   );
 };
+
+// Dynamically import the content component with SSR disabled
+const ICDTestsPage = dynamic(() => Promise.resolve(ICDTestsContent), {
+  ssr: false
+});
 
 export default ICDTestsPage; 

@@ -24,137 +24,50 @@ Checking ports...
 🏁 Diagnostics complete.
 
 ✅ All checks passed.
+(node:35850) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/sanantha/healthcare-portal/apps/preferences-mfe/scripts/diagnose.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/sanantha/healthcare-portal/apps/preferences-mfe/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
 
 > @healthcare-portal/preferences-mfe@0.1.0 dev
-> NODE_OPTIONS='--trace-warnings' NEXT_PRIVATE_LOCAL_WEBPACK=true PORT=${PORT:-3002} next dev
+> NODE_OPTIONS='--max-old-space-size=4096' NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002
 
-  ▲ Next.js 14.2.28
-  - Local:        http://localhost:3002
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3002
 
- ✓ Starting...
+npm error code ENOWORKSPACES
+npm error This command does not support workspaces.
+npm error A complete log of this run can be found in: /Users/sanantha/.npm/_logs/2025-04-29T03_07_29_507Z-debug-0.log
 [ Module Federation Manifest Plugin ] Manifest will use absolute path resolution via its host at runtime, reason: publicPath='auto'
 [ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
 [ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
- ✓ Ready in 1541ms
+ ✓ Ready in 1652ms
 [ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
 [ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
- ✓ Compiled /src/middleware in 41ms (72 modules)
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /_error in 253ms (439 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /src/middleware in 35ms (64 modules)
 [Request] {
   method: 'GET',
   url: 'http://localhost:3002/preferences',
   headers: {
   accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
   accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
+  accept-language: 'en-US,en;q=0.9',
+  cache-control: 'max-age=0',
   connection: 'keep-alive',
   host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
+  referer: 'http://localhost:3002/preferences',
+  sec-ch-ua: '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
   sec-ch-ua-mobile: '?0',
   sec-ch-ua-platform: '"macOS"',
   sec-fetch-dest: 'document',
   sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
-[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
-[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
- ✓ Compiled /preferences in 323ms (614 modules)
- GET /preferences 200 in 438ms
-[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
- ✓ Compiled /api/preferences in 114ms (417 modules)
-2025-04-26 17:55:06 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:07 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 313ms
-2025-04-26 17:55:07 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:07 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 8ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
-[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
-[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
- ✓ Compiled / in 185ms (776 modules)
- GET / 200 in 206ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: '*/*',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  referer: 'http://localhost:3002/',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'empty',
-  sec-fetch-mode: 'cors',
   sec-fetch-site: 'same-origin',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http',
-  x-nextjs-data: '1'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /_next/data/development/preferences.json 200 in 4ms
-2025-04-26 17:55:08 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:08 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 29ms
-2025-04-26 17:55:08 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:08 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 7ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
   upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
+  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
   x-forwarded-for: '::1',
   x-forwarded-host: 'localhost:3002',
   x-forwarded-port: '3002',
@@ -162,298 +75,11 @@ Checking ports...
 }
 }
 [Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 2ms
-2025-04-26 17:55:08 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:08 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 8ms
-2025-04-26 17:55:08 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:08 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 6ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 6ms
-2025-04-26 17:55:19 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:19 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 7ms
-2025-04-26 17:55:19 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:19 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 6ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 2ms
-2025-04-26 17:55:29 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:29 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 8ms
-2025-04-26 17:55:29 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:29 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 2ms
-2025-04-26 17:55:40 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:40 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 6ms
-2025-04-26 17:55:40 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:40 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 3ms
-2025-04-26 17:55:50 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:50 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 6ms
-2025-04-26 17:55:50 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:55:50 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 4ms
-2025-04-26 17:56:01 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:01 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 6ms
-2025-04-26 17:56:01 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:01 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 7ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 3ms
-2025-04-26 17:56:22 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:22 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 5ms
-2025-04-26 17:56:22 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:22 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 2ms
-2025-04-26 17:56:32 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:32 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 6ms
-2025-04-26 17:56:32 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:56:32 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 3ms
-2025-04-26 17:57:02 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:57:02 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 6ms
-2025-04-26 17:57:02 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:57:02 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
-[Request] {
-  method: 'GET',
-  url: 'http://localhost:3002/preferences',
-  headers: {
-  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-  accept-encoding: 'gzip, deflate, br, zstd',
-  accept-language: 'en-US',
-  connection: 'keep-alive',
-  host: 'localhost:3002',
-  sec-ch-ua: '"Chromium";v="136", "HeadlessChrome";v="136", "Not.A/Brand";v="99"',
-  sec-ch-ua-mobile: '?0',
-  sec-ch-ua-platform: '"macOS"',
-  sec-fetch-dest: 'document',
-  sec-fetch-mode: 'navigate',
-  sec-fetch-site: 'none',
-  sec-fetch-user: '?1',
-  upgrade-insecure-requests: '1',
-  user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36',
-  x-forwarded-for: '::1',
-  x-forwarded-host: 'localhost:3002',
-  x-forwarded-port: '3002',
-  x-forwarded-proto: 'http'
-}
-}
-[Response] { status: 200, statusText: '', headers: { x-middleware-next: '1' } }
- GET /preferences 200 in 2ms
-2025-04-26 17:57:13 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:57:13 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 200 in 5ms
-2025-04-26 17:57:13 [[32minfo[39m]: API Request received {"service":"preferences-mfe","method":"GET","url":"/api/preferences","query":{},"headers":{"host":"localhost:3002","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.7103.25 Safari/537.36","sec-ch-ua":"\"Chromium\";v=\"136\", \"HeadlessChrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"","accept-language":"en-US","sec-ch-ua-mobile":"?0","accept":"*/*","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:3002/preferences","accept-encoding":"gzip, deflate, br, zstd","if-none-match":"\"w2cv69oqrd4y\"","x-forwarded-host":"localhost:3002","x-forwarded-port":"3002","x-forwarded-proto":"http","x-forwarded-for":"::1"}}
-2025-04-26 17:57:13 [[32minfo[39m]: Preferences retrieved successfully {"service":"preferences-mfe","data":{"userId":"test-user","theme":"light","notifications":{"email":false,"push":true,"sms":false},"security":{"twoFactorAuth":true,"passwordChangeReminder":true,"loginAlerts":false}}}
- GET /api/preferences 304 in 5ms
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: {auto}/static/chunks/mf-manifest.json 
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /preferences in 129ms (441 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[ Module Federation Manifest Plugin ] Manifest Link: /_next/mf-manifest.json 
+ ✓ Compiled /api/preferences in 92ms (221 modules)
