@@ -23,7 +23,7 @@ const ICDTests = dynamic(
 
 // Import Preferences component with proper error handling and SSR disabled
 const Preferences = dynamic(
-  () => import('preferences_mfe/pages/preferences').catch((err) => {
+  () => import('preferences_mfe/Preferences').catch((err) => {
     console.error('Failed to load Preferences:', err);
     return () => <div className="text-red-500 p-4">Failed to load Preferences: {err.message}</div>;
   }),

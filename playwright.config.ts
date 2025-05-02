@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { resolve } from 'path';
 
 /**
  * Read environment variables from file.
@@ -73,30 +74,5 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
-
-  /* Run your local dev server before starting the tests */
-  webServer: [
-    {
-      command: 'NEXT_PRIVATE_LOCAL_WEBPACK=true npm run dev',
-      url: 'http://localhost:3000',
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-      env: {
-        NEXT_PUBLIC_API_URL: 'http://localhost:3000',
-      },
-    },
-    {
-      command: 'cd ../preferences-mfe && npm run dev',
-      url: 'http://localhost:3001',
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-    },
-    {
-      command: 'cd ../icd-tests-mfe && npm run dev',
-      url: 'http://localhost:3002',
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-    }
   ],
 });

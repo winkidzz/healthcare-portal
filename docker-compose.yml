@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  letta:
+    image: letta/letta:latest
+    ports:
+      - "8283:8283"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SECURE=true
+      - LETTA_SERVER_PASSWORD=${LETTA_SERVER_PASSWORD}
+    volumes:
+      - ~/.letta/.persist/pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
   chroma:
     image: chromadb/chroma:latest
     ports:

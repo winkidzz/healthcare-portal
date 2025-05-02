@@ -3,8 +3,12 @@ declare module 'icd_tests_mfe/ICDTests' {
   export default ICDTests;
 }
 
-declare module 'preferences_mfe/pages/preferences' {
-  const Preferences: React.ComponentType;
+declare module 'preferences_mfe/Preferences' {
+  import { FC } from 'react';
+  export interface PreferencesProps {
+    onLoginRedirect?: () => void;
+  }
+  const Preferences: FC<PreferencesProps>;
   export default Preferences;
 }
 

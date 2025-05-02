@@ -260,6 +260,15 @@
           ]
         }
       },
+      "mcp": {
+        "enabled": true,
+        "type": "letta",
+        "endpoint": "http://localhost:8283",
+        "secure": true,
+        "autoConnect": true,
+        "retryAttempts": 3,
+        "retryDelay": 2000
+      },
       "chroma": {
         "enabled": true,
         "config": {

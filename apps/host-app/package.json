@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development node scripts/start-dev.js",
-    "dev:next": "next dev",
+    "dev:next": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3000",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "next start -p 3000",
     "lint": "next lint",
@@ -22,8 +22,6 @@
     "axios": "^1.6.7",
     "next": "14.1.0",
     "postcss": "^8.4.35",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
     "react-query": "^3.39.3",
     "tailwindcss": "^3.4.1",
     "webpack": "^5.89.0"
@@ -36,8 +34,8 @@
     "@testing-library/react": "^14.2.0",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.11.24",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "babel-loader": "^10.0.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
@@ -47,7 +45,7 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

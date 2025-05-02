@@ -14,33 +14,26 @@ const nextConfig = {
         name: 'icd_tests_mfe',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './ICDTests': './src/pages/index.tsx',
+          './ICDTests': './src/components/ICDTests.tsx',
         },
         shared: {
           react: {
             singleton: true,
-            requiredVersion: false,
+            requiredVersion: '^18.2.0',
             eager: true,
+            strictVersion: true,
           },
           'react-dom': {
             singleton: true,
-            requiredVersion: false,
+            requiredVersion: '^18.2.0',
             eager: true,
+            strictVersion: true,
           },
           'react/jsx-runtime': {
             singleton: true,
-            requiredVersion: false,
+            requiredVersion: '^18.2.0',
             eager: true,
-          },
-          'react/jsx-dev-runtime': {
-            singleton: true,
-            requiredVersion: false,
-            eager: true,
-          },
-          '@healthcare-portal/shared-library': {
-            singleton: true,
-            requiredVersion: false,
-            eager: true,
+            strictVersion: true,
           },
         },
         extraOptions: {

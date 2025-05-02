@@ -1,9 +1,7 @@
-import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { Patient } from '@healthcare-portal/shared-library';
 
-// Client-side only component
-const ICDTestsContent = () => {
+const ICDTests = () => {
   const [mounted, setMounted] = useState(false);
   const [patient, setPatient] = useState<Patient | null>(null);
 
@@ -52,9 +50,4 @@ const ICDTestsContent = () => {
   );
 };
 
-// Dynamically import the content component with SSR disabled
-const ICDTestsPage = dynamic(() => Promise.resolve(ICDTestsContent), {
-  ssr: false
-});
-
-export default ICDTestsPage; 
+export default ICDTests; 

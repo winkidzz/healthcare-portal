@@ -41,16 +41,16 @@ export const PreferencesProvider = dynamic<PreferencesProviderProps>(() => {
   }
 });
 
-export const Preferences = dynamic(() => {
+export const Preferences = dynamic<any>(() => {
   console.log('Loading Preferences module');
-  return loadWithRetry(() => import('preferences_mfe/pages/preferences'))
+  return loadWithRetry(() => import('preferences_mfe/Preferences'))
     .then(mod => {
       console.log('Preferences module loaded successfully');
       return mod.default;
     })
     .catch(error => {
       console.error('Failed to load Preferences module:', error);
-      return () => <div>Failed to load preferences. Please try again later.</div>;
+      return (props: any) => <div>Failed to load preferences. Please try again later.</div>;
     });
 }, {
   ssr: false,

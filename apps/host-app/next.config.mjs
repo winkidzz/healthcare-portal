@@ -5,6 +5,9 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const PREFERENCES_MFE_URL = process.env.NEXT_PUBLIC_PREFERENCES_MFE_URL || 'http://localhost:3001';
+const ICD_TESTS_MFE_URL = process.env.NEXT_PUBLIC_ICD_TESTS_MFE_URL || 'http://localhost:3002';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -28,8 +31,8 @@ const nextConfig = {
         name: 'host_app',
         filename: 'static/chunks/remoteEntry.js',
         remotes: {
-          preferences_mfe: `preferences_mfe@${process.env.PREFERENCES_MFE_URL || 'http://localhost:3002'}/_next/static/chunks/remoteEntry.js`,
-          icd_tests_mfe: `icd_tests_mfe@${process.env.ICD_TESTS_MFE_URL || 'http://localhost:3001'}/_next/static/chunks/remoteEntry.js`,
+          preferences_mfe: `preferences_mfe@${PREFERENCES_MFE_URL}/_next/static/chunks/remoteEntry.js`,
+          icd_tests_mfe: `icd_tests_mfe@${ICD_TESTS_MFE_URL}/_next/static/chunks/remoteEntry.js`,
         },
         exposes: {
           './pages/index': './src/pages/index.tsx',
@@ -37,44 +40,26 @@ const nextConfig = {
         shared: {
           react: {
             singleton: true,
-            requiredVersion: '^18.3.1',
+            requiredVersion: '^18.2.0',
             eager: true,
             strictVersion: true,
           },
           'react-dom': {
             singleton: true,
-            requiredVersion: '^18.3.1',
+            requiredVersion: '^18.2.0',
             eager: true,
             strictVersion: true,
           },
           'react/jsx-runtime': {
             singleton: true,
-            requiredVersion: '^18.3.1',
+            requiredVersion: '^18.2.0',
             eager: true,
             strictVersion: true,
-          },
-          'react/jsx-dev-runtime': {
-            singleton: true,
-            requiredVersion: '^18.3.1',
-            eager: true,
-            strictVersion: true,
-          },
-          'next/dynamic': {
-            singleton: true,
-            requiredVersion: false,
-            eager: true,
-            strictVersion: false,
-          },
-          '@healthcare-portal/shared-library': {
-            singleton: true,
-            requiredVersion: false,
-            eager: true,
           },
         },
         extraOptions: {
           automaticAsyncBoundary: true,
           skipSharingNextInternals: true,
-          exposePages: true,
         },
       })
     );
@@ -104,7 +89,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/_next/static/chunks/remoteEntry.js',
+        source: '/_next/static/chunks/:path*',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
@@ -116,11 +101,7 @@ const nextConfig = {
           },
           {
             key: 'Access-Control-Allow-Headers',
-            value: 'Content-Type, Authorization',
-          },
-          {
-            key: 'Cache-Control',
-            value: 'no-store, max-age=0',
+            value: 'X-Requested-With, Content-Type, Authorization',
           },
         ],
       },
