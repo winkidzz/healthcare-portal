@@ -1,6 +1,6 @@
-import { Theme, UserPreferences } from '@/types/preferences';
+import type { Theme, UserPreferences } from '@healthcare-portal/shared-library/src/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+const API_BASE_URL = '/api';
 
 class PreferencesServiceError extends Error {
   constructor(message: string, public status?: number) {

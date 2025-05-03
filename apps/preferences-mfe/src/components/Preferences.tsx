@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { preferencesService } from '@/services/preferences';
-import { UserPreferences } from '@/types/preferences';
-import { PreferencesServiceError } from '@/services/preferences';
+import { preferencesService } from '@/services/preferencesService';
+import type { UserPreferences } from '@healthcare-portal/shared-library/src/types';
 import dynamic from 'next/dynamic';
 
 const ClientLayout = dynamic(
@@ -32,19 +31,10 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
     const fetchPreferences = async () => {
       try {
         const data = await preferencesService.getUserPreferences();
+        console.log('[Preferences] fetched data:', data);
         setPreferences(data);
       } catch (err) {
-        if (err instanceof PreferencesServiceError) {
-          if (err.status === 401) {
-            if (onLoginRedirect) {
-              onLoginRedirect();
-            }
-          } else {
-            setError(err.message);
-          }
-        } else {
-          setError('An unexpected error occurred');
-        }
+        setError(err instanceof Error ? err.message : 'An unexpected error occurred');
       } finally {
         setLoading(false);
       }
@@ -55,8 +45,8 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
 
   const handleThemeChange = async (theme: UserPreferences['theme']) => {
     try {
-      await preferencesService.updateTheme(theme);
-      setPreferences(prev => prev ? { ...prev, theme } : null);
+      const updated = await preferencesService.updateUserPreferences({ theme });
+      setPreferences(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update theme');
     }
@@ -64,17 +54,8 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
 
   const handleNotificationChange = async (type: keyof UserPreferences['notifications'], value: boolean) => {
     try {
-      await preferencesService.updateNotificationPreference(type, value);
-      setPreferences(prev => {
-        if (!prev) return null;
-        return {
-          ...prev,
-          notifications: {
-            ...prev.notifications,
-            [type]: value
-          }
-        };
-      });
+      const updated = await preferencesService.updateUserPreferences({ notifications: { ...preferences?.notifications, [type]: value } });
+      setPreferences(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update notification preference');
     }
@@ -82,17 +63,8 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
 
   const handleSecurityChange = async (type: keyof UserPreferences['security'], value: boolean) => {
     try {
-      await preferencesService.updateSecurityPreference(type, value);
-      setPreferences(prev => {
-        if (!prev) return null;
-        return {
-          ...prev,
-          security: {
-            ...prev.security,
-            [type]: value
-          }
-        };
-      });
+      const updated = await preferencesService.updateUserPreferences({ security: { ...preferences?.security, [type]: value } });
+      setPreferences(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update security preference');
     }
