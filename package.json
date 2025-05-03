@@ -32,6 +32,7 @@
     "typescript": "^5.3.0"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@module-federation/nextjs-mf": "^8.8.25",
     "@module-federation/node": "^2.7.1",
     "esbuild": "^0.25.3",
