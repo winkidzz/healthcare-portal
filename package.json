@@ -10,14 +10,12 @@
   },
   "scripts": {
     "dev": "concurrently -k -n preferences,icdtests,host 'npm run -w apps/preferences-mfe dev:next' 'npm run -w apps/icd-tests-mfe dev:next' 'sleep 5 && npm run -w apps/host-app dev:next'",
-    "dev:all": "node scripts/start-all.js",
     "build": "turbo run build",
     "start": "turbo run start --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install",
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
