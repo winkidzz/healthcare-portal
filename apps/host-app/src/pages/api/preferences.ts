@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { UserPreferences } from '@healthcare-portal/shared-library/src/types';
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<UserPreferences>
 ) {
-  res.status(200).json({
+  const preferences: UserPreferences = {
     theme: "light",
     notifications: {
       email: true,
@@ -15,11 +16,7 @@ export default function handler(
       twoFactorAuth: false,
       passwordChangeReminder: true,
       loginAlerts: true
-    },
-    language: "en",
-    email: "user@example.com",
-    displayName: "Jane Doe",
-    timezone: "America/New_York",
-    // Add more fields as needed for the Preferences component
-  });
+    }
+  };
+  res.status(200).json(preferences);
 } 

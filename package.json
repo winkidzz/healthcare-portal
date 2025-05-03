@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "dev": "turbo run dev --parallel",
+    "dev": "concurrently -k -n preferences,icdtests,host 'npm run -w apps/preferences-mfe dev:next' 'npm run -w apps/icd-tests-mfe dev:next' 'sleep 5 && npm run -w apps/host-app dev:next'",
     "dev:all": "node scripts/start-all.js",
     "build": "turbo run build",
     "start": "turbo run start --parallel",
