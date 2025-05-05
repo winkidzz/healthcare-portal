@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { UserPreferences } from '@/types/preferences';
+import type { UserPreferences } from '@healthcare-portal/shared-library/src/types/preferences';
 
 const mockPreferences: UserPreferences = {
   theme: 'light',

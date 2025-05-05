@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { preferencesService } from '@/services/preferencesService';
-import { Theme } from '@/types/preferences';
+import type { Theme } from '@healthcare-portal/shared-library/src/types/preferences';
 
 export const ThemeSelector: React.FC = () => {
   const [mounted, setMounted] = useState(false);

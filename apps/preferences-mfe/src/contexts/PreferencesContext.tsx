@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { preferencesService } from '@/services/preferencesService';
-import type { UserPreferences, Theme } from '@/types/preferences';
+import type { UserPreferences, Theme } from '@healthcare-portal/shared-library/src/types/preferences';
 
 interface PreferencesContextType {
   preferences: UserPreferences | null;

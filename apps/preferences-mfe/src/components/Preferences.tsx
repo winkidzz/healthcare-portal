@@ -54,7 +54,13 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
 
   const handleNotificationChange = async (type: keyof UserPreferences['notifications'], value: boolean) => {
     try {
-      const updated = await preferencesService.updateUserPreferences({ notifications: { ...preferences?.notifications, [type]: value } });
+      const notifications = {
+        email: preferences?.notifications?.email ?? false,
+        push: preferences?.notifications?.push ?? false,
+        sms: preferences?.notifications?.sms ?? false,
+        [type]: value
+      };
+      const updated = await preferencesService.updateUserPreferences({ notifications });
       setPreferences(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update notification preference');
@@ -63,7 +69,13 @@ const Preferences: React.FC<PreferencesProps> = ({ onLoginRedirect }) => {
 
   const handleSecurityChange = async (type: keyof UserPreferences['security'], value: boolean) => {
     try {
-      const updated = await preferencesService.updateUserPreferences({ security: { ...preferences?.security, [type]: value } });
+      const security = {
+        twoFactorAuth: preferences?.security?.twoFactorAuth ?? false,
+        passwordChangeReminder: preferences?.security?.passwordChangeReminder ?? false,
+        loginAlerts: preferences?.security?.loginAlerts ?? false,
+        [type]: value
+      };
+      const updated = await preferencesService.updateUserPreferences({ security });
       setPreferences(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update security preference');

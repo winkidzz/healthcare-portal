@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Professional Healthcare Color Palette */
+:root {
+  --primary-blue: #1976D2;
+  --teal-accent: #26B7A0;
+  --background-soft: #F4F8FB;
+  --white: #FFFFFF;
+  --text-dark: #1A2A36;
+  --text-muted: #6B7A90;
+  --error: #E57373;
+}
+
+body {
+  background: var(--background-soft);
+  color: var(--text-dark);
+} 

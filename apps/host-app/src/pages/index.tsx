@@ -1,70 +1,12 @@
 'use client';
-
-import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { log } from '@/utils/logger';
 
-// Import ICD Tests component with proper error handling and SSR disabled
-const ICDTests = dynamic(
-  () => import('icd_tests_mfe/ICDTests').catch((err) => {
-    console.error('Failed to load ICDTests:', err);
-    return () => <div className="text-red-500 p-4">Failed to load ICD Tests: {err.message}</div>;
-  }),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex items-center justify-center p-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-        <span className="ml-2 text-gray-600">Loading ICD Tests...</span>
-      </div>
-    ),
-  }
-);
-
-// Import Preferences component with proper error handling and SSR disabled
-const Preferences = dynamic(
-  () => import('preferences_mfe/Preferences').catch((err) => {
-    console.error('Failed to load Preferences:', err);
-    return () => <div className="text-red-500 p-4">Failed to load Preferences: {err.message}</div>;
-  }),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex items-center justify-center p-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-        <span className="ml-2 text-gray-600">Loading Preferences...</span>
-      </div>
-    ),
-  }
-);
-
-// Create an error boundary component
-const ErrorBoundary = dynamic(
-  () => import('../components/ErrorBoundary'),
-  { ssr: false }
-);
+const AppLauncher = dynamic(() => import('../components/AppLauncher'), { ssr: false });
 
 export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-[60vh]">
-      <ErrorBoundary
-        onError={(error, componentStack) => {
-          log.error('Error in ICD Tests component', {
-            error: error.message,
-            stack: error.stack,
-            componentStack
-          });
-        }}
-      >
-        <Suspense fallback={
-          <div className="flex items-center justify-center p-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-            <span className="ml-2 text-gray-600">Loading ICD Tests...</span>
-          </div>
-        }>
-          <ICDTests />
-        </Suspense>
-      </ErrorBoundary>
+      <AppLauncher />
     </div>
   );
 } 

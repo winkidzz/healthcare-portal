@@ -110,6 +110,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: '/api/preferences/:path*',
+        destination: 'http://localhost:3001/api/preferences/:path*',
+      },
+      {
         source: '/preferences-mfe/_next/static/chunks/:path*',
         destination: 'http://localhost:3002/_next/static/chunks/:path*',
       },

@@ -68,4 +68,19 @@ next-env.d.ts
 **/build/
 *.iml
 
-# Gradle-related ignore patterns 
+# Gradle-related ignore patterns
+
+# Added by Claude Task Master
+# Logs
+logs
+*.log
+dev-debug.log
+# Dependency directories
+node_modules/
+# Environment variables
+# Editor directories and files
+.vscode
+# OS specific
+# Task files
+tasks.json
+tasks/ 

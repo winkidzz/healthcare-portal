@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import logger, { log } from '@/utils/logger';

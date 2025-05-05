@@ -1,0 +1,71 @@
+<context>
+# Overview  
+A modern healthcare portal for managing patient information, preferences, and ICD test workflows. The portal is designed for healthcare providers and patients, offering a unified, modular experience with microfrontends for extensibility. It solves the problem of fragmented healthcare data and user experience by integrating patient management, preferences, and clinical tools into a single, scalable platform.
+
+# Core Features  
+- **Host Application**: Main entry point, orchestrates MFEs, provides navigation, error boundaries, and unified styling.
+- **Preferences Micro-frontend (MFE)**: Allows users to view and update their preferences (theme, notifications, security settings) using a shared type system for consistency.
+- **ICD Tests Micro-frontend (MFE)**: Enables healthcare providers to view patient information and run ICD-10/ICD-11 tests for clinical coding and decision support.
+- **Shared Library**: Provides common types (e.g., `UserPreferences`, `Patient`), utilities, and UI components to ensure consistency and type safety across all apps.
+- **API Endpoints**: `/api/preferences` for getting/updating user preferences, typed with shared types.
+
+# User Experience  
+- **Personas**: Healthcare providers (doctors, nurses, admins), patients.
+- **Key Flows**:
+  - Providers log in, view patient data, run ICD tests, and manage preferences.
+  - Patients log in, view and update their preferences.
+- **UI/UX**:
+  - Consistent, responsive design using Tailwind CSS.
+  - Error boundaries and loading states for all MFEs.
+  - Accessible (WCAG 2.1 AA), keyboard navigation, ARIA labels, and color contrast.
+</context>
+<PRD>
+# Technical Architecture  
+- **Framework**: Next.js 14 (App Router), TypeScript, Tailwind CSS.
+- **Micro-frontend Architecture**: Module Federation for dynamic loading of MFEs (Preferences, ICD Tests).
+- **Shared Library**: Centralized types and components (e.g., `UserPreferences`, `Patient`).
+- **API**: RESTful endpoint `/api/preferences` (GET/PUT), using the `UserPreferences` type:
+  ```typescript
+  export interface UserPreferences {
+    theme: 'light' | 'dark' | 'system';
+    notifications: { email: boolean; push: boolean; sms: boolean; };
+    security: { twoFactorAuth: boolean; passwordChangeReminder: boolean; loginAlerts: boolean; };
+  }
+  ```
+- **ICD Tests Data Model**: Patient info (id, name, dateOfBirth, medicalRecordNumber).
+- **State Management**: React Context for global state, local state in MFEs, hydration from host.
+- **Testing**: Playwright for E2E, unit/integration tests, robust selectors.
+- **Accessibility**: WCAG 2.1 AA, ARIA, keyboard navigation.
+
+# Development Roadmap  
+- **MVP**:
+  - Host app with navigation, error boundaries, and loading states.
+  - Preferences MFE: View/update preferences, API integration.
+  - ICD Tests MFE: View patient info, run ICD-10/ICD-11 tests (UI only, mock data).
+  - Shared library for types/components.
+  - Playwright tests for all apps.
+- **Future Enhancements**:
+  - Real authentication and user management.
+  - Persistent backend for preferences and patient data.
+  - More MFEs (e.g., Appointments, Billing).
+  - Advanced ICD test logic and integration with external systems.
+  - Improved analytics and reporting.
+
+# Logical Dependency Chain
+- Foundation: Shared library, types, and utilities.
+- Host app shell and navigation.
+- Preferences MFE and API endpoint.
+- ICD Tests MFE (mock data, UI integration).
+- Testing and accessibility.
+- Future: Add new MFEs, backend persistence, authentication, analytics.
+
+# Risks and Mitigations  
+- **Technical**: Module Federation integration complexity (mitigated by shared config and strict versioning).
+- **MVP Scope**: Ensuring a usable MVP with mock data before backend integration.
+- **Resource**: Need for robust type safety and test coverage to support future extensibility.
+
+# Appendix  
+- See `DESIGN_SPECIFICATIONS.md` and `README.md` for detailed architecture and standards.
+- Shared types in `packages/shared-library/src/types/`.
+- Example Playwright tests in `/tests`.
+</PRD> 
